@@ -87,7 +87,7 @@ const Detail: React.FC<RouteComponentProps<{ id: string }>> = ({
 
     return (
         <Container>
-            <Helmet title={ isMovie ? `${ result.title } | My Movie Taste` : `${ result.name } | My Movie Taste` } />
+            <Helmet title={ isMovie ? `${ result.title } | mymovietaste` : `${ result.name } | mymovietaste` } />
             <CoverImage src={ `${ process.env.REACT_APP_IMAGE_PREFIX }${ result.poster_path }` } alt="" />
             <Content>
                 <Title>{ isMovie ? result.title : result.name }</Title>

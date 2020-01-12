@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Helmet from 'react-helmet'
 import of from 'await-of'
 import styled from 'styled-components'
 
@@ -72,6 +73,7 @@ const HomePage = () => {
 
     return (
         <Container>
+            <Helmet title={ 'Movie | mymovietaste' } />
             <Article>
                 <Title>Latest</Title>
                 <CardList>

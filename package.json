@@ -20,6 +20,7 @@
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
+    "@types/react-helmet": "^5.0.15",
     "@types/react-router-dom": "^5.1.3",
     "@types/styled-components": "^4.4.2",
     "await-of": "^1.2.0",

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Helmet from 'react-helmet'
 import of from 'await-of'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components'
@@ -86,6 +87,7 @@ const Detail: React.FC<RouteComponentProps<{ id: string }>> = ({
 
     return (
         <Container>
+            <Helmet title={ isMovie ? `${ result.title } | My Movie Taste` : `${ result.name } | My Movie Taste` } />
             <CoverImage src={ `${ process.env.REACT_APP_IMAGE_PREFIX }${ result.poster_path }` } alt="" />
             <Content>
                 <Title>{ isMovie ? result.title : result.name }</Title>

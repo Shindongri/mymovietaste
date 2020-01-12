@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Helmet from 'react-helmet'
 import of from 'await-of'
 import styled from 'styled-components'
 
@@ -74,6 +75,7 @@ const TV: React.FC = () => {
 
     return (
         <Container>
+            <Helmet title={ 'TV | mymovietaste' } />
             <Article>
                 <Title>Latest</Title>
                 <CardList>

@@ -56,7 +56,7 @@ const HomePage = () => {
                 <h2>LATEST</h2>
                 <CardList>
                     {
-                        result && result.latest && <Card key={ result.latest.id } id={ result.latest.id } title={ result.latest.title } posterPath={ result.latest.poster_path } releaseDate={ result.latest.release_date } />
+                        result && result.latest && <Card key={ result.latest.id } id={ result.latest.id } title={ result.latest.title } posterPath={ result.latest.poster_path } releaseDate={ result.latest.release_date } voteAverage={ result.latest.vote_average } />
                     }
                 </CardList>
             </article>
@@ -65,7 +65,7 @@ const HomePage = () => {
                 <h2>UPCOMING</h2>
                 <CardList>
                     {
-                        result && result.upcoming && result.upcoming.map(({ id, poster_path, release_date, title }: any) => (<Card key={ id } id={ id } title={ title } posterPath={ poster_path } releaseDate={ release_date } />))
+                        result && result.upcoming && result.upcoming.map(({ id, poster_path, release_date, title, vote_average }: any) => (<Card key={ id } id={ id } title={ title } posterPath={ poster_path } releaseDate={ release_date.slice(0, 4) } voteAverage={ vote_average } />))
                     }
                 </CardList>
             </article>
@@ -74,7 +74,7 @@ const HomePage = () => {
                 <h2>UPCOMING</h2>
                 <CardList>
                     {
-                        result && result.nowPlaying && result.nowPlaying.map(({ id, poster_path, release_date, title }: any) => (<Card key={ id } id={ id } title={ title } posterPath={ poster_path } releaseDate={ release_date } />))
+                        result && result.nowPlaying && result.nowPlaying.map(({ id, poster_path, release_date, title, vote_average }: any) => (<Card key={ id } id={ id } title={ title } posterPath={ poster_path } releaseDate={ release_date.slice(0, 4) } voteAverage={ vote_average } />))
                     }
                 </CardList>
             </article>
@@ -83,7 +83,7 @@ const HomePage = () => {
                 <h2>UPCOMING</h2>
                 <CardList>
                     {
-                        result && result.topRated && result.topRated.map(({ id, poster_path, release_date, title }: any) => (<Card key={ id } id={ id } title={ title } posterPath={ poster_path } releaseDate={ release_date } />))
+                        result && result.topRated && result.topRated.map(({ id, poster_path, release_date, title, vote_average }: any) => (<Card key={ id } id={ id } title={ title } posterPath={ poster_path } releaseDate={ release_date.slice(0, 4) } voteAverage={ vote_average } />))
                     }
                 </CardList>
             </article>
@@ -92,7 +92,7 @@ const HomePage = () => {
                 <h2>UPCOMING</h2>
                 <CardList>
                     {
-                        result && result.popular && result.popular.map(({ id, poster_path, release_date, title }: any) => (<Card key={ id } id={ id } title={ title } posterPath={ poster_path } releaseDate={ release_date } />))
+                        result && result.popular && result.popular.map(({ id, poster_path, release_date, title, vote_average }: any) => (<Card key={ id } id={ id } title={ title } posterPath={ poster_path } releaseDate={ release_date.slice(0, 4) } voteAverage={ vote_average } />))
                     }
                 </CardList>
             </article>

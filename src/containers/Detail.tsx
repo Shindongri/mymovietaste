@@ -36,9 +36,6 @@ const Detail: React.FC<RouteComponentProps<{ id: string }>> = ({
 }) => {
     const { result, loading }: any = useFetch(params.id)
 
-    console.log(loading)
-    console.log(result)
-
     if (loading) {
         return <h1>Loading...</h1>
     }

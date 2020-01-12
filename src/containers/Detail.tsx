@@ -3,7 +3,7 @@ import of from 'await-of'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { MovieAPIs } from '../api'
+import { MovieAPIs, TvAPIs } from '../api'
 
 const Container = styled.section`
     color: #ffffff;
@@ -43,13 +43,13 @@ interface IGenre {
     name: string;
 }
 
-const useFetch = (id: string) => {
+const useFetch = (isMovie: boolean, id: string) => {
     const [loading, setLoading] = useState(true)
     const [result, setResult] = useState({})
 
     useEffect(() => {
         const fetchData = async () => {
-            const [response, error] = await of (MovieAPIs.detail(id))
+            const [response, error] = await of (isMovie ? MovieAPIs.detail(id) : TvAPIs.detail(id))
 
             if (error) {
                 throw error
@@ -77,7 +77,8 @@ const Detail: React.FC<RouteComponentProps<{ id: string }>> = ({
    history: { push },
    match: { params }
 }) => {
-    const { result, loading }: any = useFetch(params.id)
+    const isMovie = pathname.includes('/movie/')
+    const { result, loading }: any = useFetch(isMovie, params.id)
 
     if (loading) {
         return <h1>Loading...</h1>
@@ -87,8 +88,8 @@ const Detail: React.FC<RouteComponentProps<{ id: string }>> = ({
         <Container>
             <CoverImage src={ `${ process.env.REACT_APP_IMAGE_PREFIX }${ result.poster_path }` } alt="" />
             <Content>
-                <Title>{ result.title }</Title>
-                <Summary>{ renderSummary([result.release_date.slice(0, 4), result.runtime, renderGenres(result.genres)]) }</Summary>
+                <Title>{ isMovie ? result.title : result.name }</Title>
+                <Summary>{ isMovie ? renderSummary([result.release_date.slice(0, 4), `${ result.runtime } min`, renderGenres(result.genres)]) : renderSummary([result.first_air_date.slice(0, 4), `${ result.episode_run_time[0]} min` ,renderGenres(result.genres)]) }</Summary>
                 <Overview>{ result.overview }</Overview>
             </Content>
         </Container>

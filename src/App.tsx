@@ -4,9 +4,9 @@ import styled, { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
 
 import Header from './components/Header'
-import Footer from './components/Footer'
 
 import Home from './containers/Home'
+import TV from './containers/TV'
 import Detail from './containers/Detail'
 
 const GlobalStyles = createGlobalStyle`
@@ -29,9 +29,10 @@ const App: React.FC = () => {
               <Header />
               <Switch>
                   <Route exact path="/" component={ Home } />
+                  <Route exact path="/tv" component={ TV } />
                   <Route path="/movie/:id" component={ Detail } />
+                  <Route path="/tv/:id" component={ Detail } />
               </Switch>
-              <Footer />
           </Router>
           <GlobalStyles />
       </Container>

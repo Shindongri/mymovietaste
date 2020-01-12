@@ -53,14 +53,15 @@ const Year = styled.small`
 export interface IProps {
     id: number;
     title: string;
-    releaseDate: string;
+    year: string;
     posterPath: string;
     voteAverage: number;
+    isMovie?: boolean;
 }
 
-const Card: React.FC<IProps> = ({ id, title, releaseDate, posterPath, voteAverage }) => {
+const Card: React.FC<IProps> = ({ id, title, year, posterPath, voteAverage, isMovie }) => {
     return (
-        <StyledLink to={`/movie/${ id }`}>
+        <StyledLink to={ isMovie ? `/movie/${ id }` : `/tv/${ id }` }>
             <Container>
                 <ImageContainer>
                     <Image src={ `${ process.env.REACT_APP_IMAGE_PREFIX }${ posterPath }` } />
@@ -69,7 +70,7 @@ const Card: React.FC<IProps> = ({ id, title, releaseDate, posterPath, voteAverag
                         { voteAverage } / 10</Rating>
                 </ImageContainer>
                 <Title>{ title }</Title>
-                <Year>{ releaseDate }</Year>
+                <Year>{ year }</Year>
             </Container>
         </StyledLink>
     )

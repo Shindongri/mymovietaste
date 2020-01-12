@@ -16,3 +16,12 @@ export const MovieAPIs = {
     popular: () => API.get('/movie/popular'),
     detail: (id: string) => API.get(`/movie/${ id }`)
 }
+
+export const TvAPIs = {
+    latest: () => API.get('/tv/latest'),
+    airingToday: () => API.get('/tv/airing_today'),
+    onTheAir: () => API.get('/tv/on_the_air'),
+    popular: () => API.get('/tv/popular'),
+    topRated: () => API.get('/tv/top_rated'),
+    detail: (id: string) => API.get(`/tv/${ id }`)
+}

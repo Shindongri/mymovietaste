@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
+import { createGlobalStyle } from 'styled-components'
+import reset from 'styled-reset'
+
+import Header from './components/Header'
+import Footer from './components/Footer'
+
+import Home from './containers/Home'
+import Detail from './containers/Detail'
+
+const GlobalStyles = createGlobalStyle`
+    ${ reset }
+`
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <Router>
+          <Header />
+          <Switch>
+              <Route exact path="/" component={ Home } />
+              <Route path="/movie/:id" component={ Detail } />
+          </Switch>
+          <Footer />
+          <GlobalStyles />
+      </Router>
+  )
 }
 
-export default App;
+export default App
